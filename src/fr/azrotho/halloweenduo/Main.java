@@ -2,10 +2,7 @@ package fr.azrotho.halloweenduo;
 
 import fr.azrotho.halloweenduo.command.DebugCommandExecutor;
 import fr.azrotho.halloweenduo.command.FriendCommandExecutor;
-import fr.azrotho.halloweenduo.listener.OnDamageByEntityListener;
-import fr.azrotho.halloweenduo.listener.OnDamageListener;
-import fr.azrotho.halloweenduo.listener.OnJoinListener;
-import fr.azrotho.halloweenduo.listener.OnPlayerMove;
+import fr.azrotho.halloweenduo.listener.*;
 import fr.azrotho.halloweenduo.runnable.*;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -29,6 +26,7 @@ public class Main extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new OnDamageByEntityListener(), this);
         Bukkit.getPluginManager().registerEvents(new OnJoinListener(), this);
         Bukkit.getPluginManager().registerEvents(new OnPlayerMove(), this);
+        Bukkit.getPluginManager().registerEvents(new OnPlayerInteract(), this);
 
         RefillChestRunnable refillChestRunnable = new RefillChestRunnable();
         refillChestRunnable.runTaskTimer(this, 0, 20);
