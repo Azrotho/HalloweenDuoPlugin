@@ -28,7 +28,12 @@ public class FriendCommandExecutor implements CommandExecutor {
             player.sendMessage("§cVous êtes déjà en ami avec " + duo.get(player).getName());
             return true;
         }
+        if(cooldown.containsKey(player)) {
+            player.sendMessage("§cVous devez attendre " + cooldown.get(player) + " secondes avant de pouvoir changer de /friend");
+            return true;
+        }
         duo.put(player, target);
+        cooldown.put(player, 60*5);
         player.sendMessage("§aVous êtes maintenant en ami avec " + target.getName());
         return true;
     }
