@@ -17,6 +17,7 @@ public class StartFunctions {
             player.setGameMode(GameMode.ADVENTURE);
             player.setHealth(40);
             player.teleport(new Location(player.getWorld(), 808, 202, -642));
+            player.getInventory().clear();
             RefillChestRunnable.timerBeforeRefill = 3;
             Main.started = true;
         }

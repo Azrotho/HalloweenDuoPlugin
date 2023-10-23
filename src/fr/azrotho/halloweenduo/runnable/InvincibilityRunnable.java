@@ -11,6 +11,8 @@ public class InvincibilityRunnable extends BukkitRunnable {
     @Override
     public void run() {
         for (Player player : Bukkit.getOnlinePlayers()) {
+            player.setSaturation(20);
+            player.setFoodLevel(20);
             if(Main.timerInvulnerability == -1) {
                 return;
             }
