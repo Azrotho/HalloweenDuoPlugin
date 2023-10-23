@@ -6,10 +6,7 @@ import fr.azrotho.halloweenduo.listener.OnDamageByEntityListener;
 import fr.azrotho.halloweenduo.listener.OnDamageListener;
 import fr.azrotho.halloweenduo.listener.OnJoinListener;
 import fr.azrotho.halloweenduo.listener.OnPlayerMove;
-import fr.azrotho.halloweenduo.runnable.CooldownManagerRunnable;
-import fr.azrotho.halloweenduo.runnable.InvincibilityRunnable;
-import fr.azrotho.halloweenduo.runnable.PlayerCheckIfSnowRunnable;
-import fr.azrotho.halloweenduo.runnable.RefillChestRunnable;
+import fr.azrotho.halloweenduo.runnable.*;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -44,6 +41,9 @@ public class Main extends JavaPlugin {
 
         CooldownManagerRunnable cooldownManagerRunnable = new CooldownManagerRunnable();
         cooldownManagerRunnable.runTaskTimer(this, 0, 20);
+
+        FinalRunnable finalRunnable = new FinalRunnable();
+        finalRunnable.runTaskTimer(this, 0, 1);
     }
 
     @Override
