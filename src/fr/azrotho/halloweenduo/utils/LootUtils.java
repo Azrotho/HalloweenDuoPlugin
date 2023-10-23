@@ -35,44 +35,66 @@ public class LootUtils {
             ItemBuilder.createSplashPotionItemStack(
                     "§7Potion d'Invisibilité",
                     List.of(
-                            new PotionEffect(PotionEffectType.INVISIBILITY, 30*20*4, 0, false)),
+                            new PotionEffect(PotionEffectType.INVISIBILITY, 30*20, 0, false)),
                     Color.GRAY
                     ),
             ItemBuilder.createSplashPotionItemStack(
                     "§bPotion de rapidité",
                     List.of(
-                            new PotionEffect(PotionEffectType.SPEED, 30*20*4, 1, false)),
+                            new PotionEffect(PotionEffectType.SPEED, 30*20, 1, false)),
                     Color.GRAY
             ),
             ItemBuilder.createSplashPotionItemStack(
                     "§aPotion de maître tortue",
                     List.of(
-                            new PotionEffect(PotionEffectType.SLOW, 30*20*4, 3, false),
-                            new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, 30*20*4, 2, false)),
+                            new PotionEffect(PotionEffectType.SLOW, 30*20, 3, false),
+                            new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, 30*20, 2, false)),
                     Color.LIME
             ),
             ItemBuilder.createSplashPotionItemStack(
                     "§2Potion de Poison",
                     List.of(
-                            new PotionEffect(PotionEffectType.POISON, 30*20*4, 1, false)),
+                            new PotionEffect(PotionEffectType.POISON, 30*20, 1, false)),
                     Color.GREEN
             ),
             ItemBuilder.createSplashPotionItemStack(
                     "§d§lPotion de régénération",
                     List.of(
-                            new PotionEffect(PotionEffectType.REGENERATION, 30*20*4, 0, false)),
+                            new PotionEffect(PotionEffectType.REGENERATION, 30*20, 0, false)),
                     Color.FUCHSIA
             ),
             ItemBuilder.createSplashPotionItemStack(
                     "§c§lPotion de force",
                     List.of(
-                            new PotionEffect(PotionEffectType.INCREASE_DAMAGE, 30*20*4, 0, false)),
+                            new PotionEffect(PotionEffectType.INCREASE_DAMAGE, 30*20, 0, false)),
                     Color.RED
-            )
+            ),
+            ItemBuilder.createSplashPotionItemStack(
+                    "§5§lPotion de dégâts",
+                    List.of(
+                            new PotionEffect(PotionEffectType.HARM, 1, 0, false)),
+                    Color.PURPLE
+            ),
+            ItemBuilder.createSplashPotionItemStack(
+                    "§6§lPotion de Soin",
+                    List.of(
+                            new PotionEffect(PotionEffectType.HEAL, 1, 0, false)),
+                    Color.ORANGE
+            ),
+
+            ItemBuilder.getLingeringPotionInstantDamageII()
     );
+
+    private static final List<ItemStack> EXTRA_ITEMS = List.of(
+            ItemBuilder.getDarknessItemStack(),
+            ItemBuilder.getBlindnessItemStack(),
+            ItemBuilder.getSlownessItemStack()
+            );
+
     public static void spawnChest(Location loc, BlockFace direction, ItemStack... itemStacks) {
         Inventory inv = spawnChestInventory(loc, direction);
         if (inv == null) return;
+        inv.clear();
         inv.addItem(itemStacks);
         spawnFireworks(loc);
     }
@@ -104,7 +126,6 @@ public class LootUtils {
     }
 
     private static void spawnFireworks(@NotNull Location loc) {
-        loc.add(0.5, 0.5, 0.5);
         World world = Bukkit.getWorld("world");
         if (world == null) return;
         for (int i = 0; i < FIREWORKS_NUM; i++) {
@@ -131,8 +152,33 @@ public class LootUtils {
     }
 
     public static ItemStack getRandomWeapon() {
-        List<ItemStack> tempList = WEAPONS;
+        List<ItemStack> tempList = new java.util.ArrayList<>(WEAPONS);
         Collections.shuffle(tempList);
         return tempList.get(0);
+    }
+
+    public static ItemStack getRandomPotion() {
+        List<ItemStack> tempList = new java.util.ArrayList<>(POTIONS);
+        Collections.shuffle(tempList);
+        return tempList.get(0);
+    }
+
+    public static ItemStack getRandomExtraItem() {
+        List<ItemStack> tempList = new java.util.ArrayList<>(EXTRA_ITEMS);
+        Collections.shuffle(tempList);
+        return tempList.get(0);
+    }
+
+    public static ItemStack getRandomLoot() {
+        int random = (int) (Math.random() * 100);
+        if (random < 50) {
+            return getRandomWeapon();
+        } else if (random < 70) {
+            return getRandomPotion();
+        } else if (random < 90) {
+            return new ItemStack(Material.GOLDEN_APPLE, 1);
+        } else {
+            return getRandomExtraItem();
+        }
     }
 }

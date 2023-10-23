@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
-  <artifact type="jar" name="HalloweenDuoPlugin:jar">
-    <output-path>$PROJECT_DIR$/out/artifacts/HalloweenDuoPlugin_jar</output-path>
+  <artifact type="jar" build-on-make="true" name="HalloweenDuoPlugin:jar">
+    <output-path>D:/Azrotho/Plugins</output-path>
     <root id="archive" name="HalloweenDuoPlugin.jar">
       <element id="module-output" name="HalloweenDuoPlugin" />
       <element id="extracted-dir" path="$PROJECT_DIR$/libs/IridiumColorAPI-1.0.6.jar" path-in-jar="/" />
