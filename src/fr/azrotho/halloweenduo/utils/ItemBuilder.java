@@ -37,4 +37,33 @@ public class ItemBuilder {
         itemStack.setItemMeta(potionMeta);
         return itemStack;
     }
+
+    public static ItemStack getLingeringPotionInstantDamageII() {
+        ItemStack itemStack = new ItemStack(Material.LINGERING_POTION);
+        PotionMeta potionMeta = ((PotionMeta) itemStack.getItemMeta());
+        assert potionMeta != null;
+        potionMeta.setColor(Color.RED);
+        potionMeta.addCustomEffect(new PotionEffect(org.bukkit.potion.PotionEffectType.HARM, 1, 1), true);
+        potionMeta.setDisplayName("§cPotion de nuage de dégâts instantanés II");
+        itemStack.setItemMeta(potionMeta);
+        return itemStack;
+    }
+
+    public static ItemStack getDarknessItemStack() {
+        return createItemStack(Material.ECHO_SHARD, 1, "§8§lTénèbres", List.of(
+                "§7Un objet qui aveugle le reste des joueurs"
+        ));
+    }
+
+    public static ItemStack getBlindnessItemStack() {
+        return createItemStack(Material.BLACK_DYE, 1, "§8§lCécité", List.of(
+                "§7Un objet qui aveugle le reste des joueurs"
+        ));
+    }
+
+    public static ItemStack getSlownessItemStack() {
+        return createItemStack(Material.NETHERITE_BLOCK, 1, "§8§lLenteur", List.of(
+                "§7Un objet qui ralentit le reste des joueurs"
+        ));
+    }
 }

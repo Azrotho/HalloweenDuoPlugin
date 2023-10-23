@@ -3,3 +3,9 @@ version: 1.0
 main: fr.azrotho.halloweenduo.Main
 description: Plugin d'Halloween DUO
 author: Azrotho
+api-version: 1.19
+commands:
+    debug:
+        description: HalloweenDuo debug command
+        usage: /debug {args}
+        aliases: [d]
