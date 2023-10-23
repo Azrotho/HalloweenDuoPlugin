@@ -1,6 +1,7 @@
 package fr.azrotho.halloweenduo;
 
 import fr.azrotho.halloweenduo.command.DebugCommandExecutor;
+import fr.azrotho.halloweenduo.command.FriendCommandExecutor;
 import fr.azrotho.halloweenduo.listener.OnDamageByEntityListener;
 import fr.azrotho.halloweenduo.listener.OnDamageListener;
 import fr.azrotho.halloweenduo.listener.OnJoinListener;
@@ -25,6 +26,8 @@ public class Main extends JavaPlugin {
     public void onEnable() {
         logger.log(Level.INFO, "Plugin HalloweenDuo activé");
         Objects.requireNonNull(getCommand("debug")).setExecutor(new DebugCommandExecutor());
+        Objects.requireNonNull(getCommand("friend")).setExecutor(new FriendCommandExecutor());
+
         Bukkit.getPluginManager().registerEvents(new OnDamageListener(), this);
         Bukkit.getPluginManager().registerEvents(new OnDamageByEntityListener(), this);
         Bukkit.getPluginManager().registerEvents(new OnJoinListener(), this);

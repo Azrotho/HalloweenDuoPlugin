@@ -9,3 +9,7 @@ commands:
         description: HalloweenDuo debug command
         usage: /debug {args}
         aliases: [d]
+    friend:
+        description: HalloweenDuo friend command
+        usage: /friend {player}
+        aliases: [f, friends]
