@@ -5,6 +5,7 @@ import fr.azrotho.halloweenduo.listener.OnDamageByEntityListener;
 import fr.azrotho.halloweenduo.listener.OnDamageListener;
 import fr.azrotho.halloweenduo.listener.OnJoinListener;
 import fr.azrotho.halloweenduo.listener.OnPlayerMove;
+import fr.azrotho.halloweenduo.runnable.CooldownManagerRunnable;
 import fr.azrotho.halloweenduo.runnable.InvincibilityRunnable;
 import fr.azrotho.halloweenduo.runnable.PlayerCheckIfSnowRunnable;
 import fr.azrotho.halloweenduo.runnable.RefillChestRunnable;
@@ -37,6 +38,9 @@ public class Main extends JavaPlugin {
 
         PlayerCheckIfSnowRunnable playerCheckIfSnowRunnable = new PlayerCheckIfSnowRunnable();
         playerCheckIfSnowRunnable.runTaskTimer(this, 0, 0);
+
+        CooldownManagerRunnable cooldownManagerRunnable = new CooldownManagerRunnable();
+        cooldownManagerRunnable.runTaskTimer(this, 0, 20);
     }
 
     @Override
