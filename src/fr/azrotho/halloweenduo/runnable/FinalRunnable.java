@@ -23,18 +23,18 @@ public class FinalRunnable extends BukkitRunnable {
 
         if(PlayerUtils.getPlayersAlive().size() == 1) {
             for(Player player : Bukkit.getOnlinePlayers()) {
-                player.setGameMode(GameMode.SPECTATOR);
                 player.sendMessage("§c§lVictoire de " + PlayerUtils.getPlayersAlive().get(0).getName() + " !");
                 player.sendTitle("§c§lVictoire !", "§c§lVictoire de " + PlayerUtils.getPlayersAlive().get(0).getName() + " !", 20, 100, 20);
+                player.setGameMode(GameMode.SPECTATOR);
                 Main.started = false;
             }
         }
 
         if(PlayerUtils.isFinalIsDuo()) {
             for(Player player : Bukkit.getOnlinePlayers()) {
-                player.setGameMode(GameMode.SPECTATOR);
                 player.sendMessage("§c§lVictoire de l'équipe " + PlayerUtils.getPlayersAlive().get(0).getName() + " et " + PlayerUtils.getPlayersAlive().get(1).getName() + " !");
                 player.sendTitle("§c§lVictoire !", "§c§lVictoire de l'équipe " + PlayerUtils.getPlayersAlive().get(0).getName() + " et " + PlayerUtils.getPlayersAlive().get(1).getName() + " !", 20, 100, 20);
+                player.setGameMode(GameMode.SPECTATOR);
                 Main.started = false;
             }
         }
