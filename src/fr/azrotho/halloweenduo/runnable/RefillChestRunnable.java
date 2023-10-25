@@ -13,8 +13,8 @@ public class RefillChestRunnable extends BukkitRunnable {
             return;
         }
         if(timerBeforeRefill == 0) {
-            RefillChest.refillChests();
-            timerBeforeRefill = (int) (Math.random() * 60 * 4) + 60;
+            RefillChest.refillRandomChest();
+            timerBeforeRefill = (int) (Math.random() * 20) + 20;
         } else {
             timerBeforeRefill--;
         }

@@ -13,6 +13,7 @@ public class FinalRunnable extends BukkitRunnable {
     @Override
     public void run() {
         if(!Main.started) return;
+
         if(PlayerUtils.playerAlives() <= 5) {
             for(Player player : Bukkit.getOnlinePlayers()) {
                 if(player.getGameMode().equals(GameMode.ADVENTURE)) {
@@ -22,21 +23,24 @@ public class FinalRunnable extends BukkitRunnable {
         }
 
         if(PlayerUtils.getPlayersAlive().size() == 1) {
+            Player p1 = PlayerUtils.getPlayersAlive().get(0);
             for(Player player : Bukkit.getOnlinePlayers()) {
-                player.sendMessage("§c§lVictoire de " + PlayerUtils.getPlayersAlive().get(0).getName() + " !");
-                player.sendTitle("§c§lVictoire !", "§c§lVictoire de " + PlayerUtils.getPlayersAlive().get(0).getName() + " !", 20, 100, 20);
+                player.sendMessage("§c§lVictoire de " + p1.getName() + " !");
+                player.sendTitle("§c§lVictoire !", "§c§lVictoire de " + p1.getName() + " !", 20, 100, 20);
                 player.setGameMode(GameMode.SPECTATOR);
-                Main.started = false;
             }
+            Main.started = false;
         }
 
         if(PlayerUtils.isFinalIsDuo()) {
+            Player p1 = PlayerUtils.getPlayersAlive().get(0);
+            Player p2 = PlayerUtils.getPlayersAlive().get(1);
             for(Player player : Bukkit.getOnlinePlayers()) {
-                player.sendMessage("§c§lVictoire de l'équipe " + PlayerUtils.getPlayersAlive().get(0).getName() + " et " + PlayerUtils.getPlayersAlive().get(1).getName() + " !");
-                player.sendTitle("§c§lVictoire !", "§c§lVictoire de l'équipe " + PlayerUtils.getPlayersAlive().get(0).getName() + " et " + PlayerUtils.getPlayersAlive().get(1).getName() + " !", 20, 100, 20);
+                player.sendMessage("§c§lVictoire de l'équipe " + p1.getName() + " et " + p2.getName() + " !");
+                player.sendTitle("§c§lVictoire !", "§c§lVictoire de l'équipe " + p1.getName() + " et " + p2.getName() + " !", 20, 100, 20);
                 player.setGameMode(GameMode.SPECTATOR);
-                Main.started = false;
             }
+            Main.started = false;
         }
     }
 }

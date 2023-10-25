@@ -22,9 +22,8 @@ public class OnDamageByEntityListener implements Listener {
                     }
                 }
                 player.getInventory().clear();
-
                 Player killer = (Player) event.getDamager();
-                killer.getItemInHand().setType(Material.AIR);
+                killer.getItemInHand().setAmount(0);
             }
         }
     }

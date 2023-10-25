@@ -11,8 +11,8 @@ public class OnJoinListener implements Listener {
     public void onJoin(PlayerJoinEvent event) {
         event.getPlayer().teleport(new Location(event.getPlayer().getWorld(), 808, 202, -642));
         event.getPlayer().setGameMode(GameMode.SPECTATOR);
-        event.getPlayer().getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(40);
-        event.getPlayer().setHealth(40);
+        event.getPlayer().getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(20);
+        event.getPlayer().setHealth(20);
         for(World world : Bukkit.getWorlds()) {
             world.setGameRule(GameRule.NATURAL_REGENERATION, false);
         }

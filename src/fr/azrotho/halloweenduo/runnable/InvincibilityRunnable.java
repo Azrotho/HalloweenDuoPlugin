@@ -17,7 +17,10 @@ public class InvincibilityRunnable extends BukkitRunnable {
                 return;
             }
             player.spigot().sendMessage(ChatMessageType.ACTION_BAR, TextComponent.fromLegacyText("Il vous reste " + Main.timerInvulnerability + " secondes d'invincibilité"));
-            Main.timerInvulnerability--;
         }
+        if(Main.timerInvulnerability == -1) {
+            return;
+        }
+        Main.timerInvulnerability--;
     }
 }
