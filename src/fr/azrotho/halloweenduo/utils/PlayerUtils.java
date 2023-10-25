@@ -26,9 +26,11 @@ public class PlayerUtils {
     }
 
     public static boolean isFinalIsDuo() {
-        if(Bukkit.getOnlinePlayers().size() == 2) {
+        if(playerAlives() == 2) {
             List<Player> finalist = getPlayersAlive();
-            return FriendCommandExecutor.duo.get(finalist.get(0)) == finalist.get(1) && FriendCommandExecutor.duo.get(finalist.get(1)) == finalist.get(0);
+            if(FriendCommandExecutor.duo.get(finalist.get(0)) == finalist.get(1) && FriendCommandExecutor.duo.get(finalist.get(1)) == finalist.get(0)) {
+                return true;
+            }
         }
         return false;
     }

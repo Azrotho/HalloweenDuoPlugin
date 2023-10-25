@@ -24,7 +24,7 @@ public class FriendCommandExecutor implements CommandExecutor {
             player.sendMessage("§cVous ne pouvez pas vous ajouter en ami");
             return true;
         }
-        if(duo.containsKey(player)) {
+        if(duo.get(player) == target) {
             player.sendMessage("§cVous êtes déjà en ami avec " + duo.get(player).getName());
             return true;
         }

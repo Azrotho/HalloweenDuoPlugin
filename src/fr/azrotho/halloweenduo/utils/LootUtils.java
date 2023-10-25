@@ -1,6 +1,7 @@
 package fr.azrotho.halloweenduo.utils;
 
 import org.bukkit.*;
+import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
 import org.bukkit.block.Chest;
 import org.bukkit.entity.Entity;
@@ -27,7 +28,7 @@ public class LootUtils {
             new ItemStack(Material.WOODEN_AXE),
             new ItemStack(Material.STONE_AXE),
             new ItemStack(Material.NETHERITE_HOE),
-            new ItemStack(Material.DIAMOND_SWORD),
+            new ItemStack(Material.DIAMOND_SHOVEL),
             new ItemStack(Material.IRON_PICKAXE)
     );
 
@@ -128,27 +129,7 @@ public class LootUtils {
     private static void spawnFireworks(@NotNull Location loc) {
         World world = Bukkit.getWorld("world");
         if (world == null) return;
-        for (int i = 0; i < FIREWORKS_NUM; i++) {
-            Location loc1 = loc.clone();
-            loc1.add(
-                    (Math.random() - 0.5) * 2 * FIREWORKS_SPAWN_OFFSET,
-                    (Math.random() - 0.5) * 2 * FIREWORKS_SPAWN_OFFSET,
-                    (Math.random() - 0.5) * 2 * FIREWORKS_SPAWN_OFFSET
-            );
-            Entity entity = world.spawnEntity(loc, EntityType.FIREWORK);
-            Firework firework = (Firework) entity;
-            FireworkMeta meta = firework.getFireworkMeta();
-            meta.setPower(1);
-            meta.addEffects(
-                    FireworkEffect.builder()
-                            .trail(true)
-                            .flicker(true)
-                            .with(FireworkEffect.Type.BALL)
-                            .withColor(Color.ORANGE, Color.RED, Color.YELLOW)
-                            .build()
-            );
-            firework.setFireworkMeta(meta);
-        }
+        world.playSound(loc, Sound.ENTITY_PLAYER_LEVELUP, 1, 1);
     }
 
     public static ItemStack getRandomWeapon() {
@@ -180,5 +161,12 @@ public class LootUtils {
         } else {
             return getRandomExtraItem();
         }
+    }
+
+    public static void clearChest(Location location) {
+        Block block = location.getBlock();
+        if (block.getType() != Material.CHEST) return;
+        Chest chest = (Chest) block.getState();
+        chest.getBlockInventory().clear();
     }
 }

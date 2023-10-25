@@ -33,4 +33,14 @@ public class RefillChest {
             LootUtils.spawnChest(location.clone(), BlockFace.NORTH, LootUtils.getRandomLoot());
         }
     }
+
+    public static void refillRandomChest() {
+        LootUtils.spawnChest(CHESTS.get((int) (Math.random() * CHESTS.size())).clone(), BlockFace.NORTH, LootUtils.getRandomLoot());
+    }
+
+    public static void clearAllChests() {
+    for(Location location : CHESTS) {
+            LootUtils.clearChest(location);
+        }
+    }
 }
