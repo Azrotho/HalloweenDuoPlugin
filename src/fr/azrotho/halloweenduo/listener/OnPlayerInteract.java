@@ -10,6 +10,8 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
+import java.util.List;
+
 public class OnPlayerInteract implements Listener {
     @EventHandler
     public void onInteraction(PlayerInteractEvent event) {
@@ -37,6 +39,20 @@ public class OnPlayerInteract implements Listener {
             for(Player player : Bukkit.getOnlinePlayers()) {
                 if(player != event.getPlayer()) {
                     player.addPotionEffect(new PotionEffect(PotionEffectType.DARKNESS, 20 * 60, 0, false, false, false));
+                }
+            }
+            event.getItem().setAmount(event.getItem().getAmount() - 1);
+        }
+
+        if(event.getItem().isSimilar(ItemBuilder.getPumpkinItemStack())) {
+            for(Player player : Bukkit.getOnlinePlayers()) {
+                if(player != event.getPlayer()) {
+                    player.getInventory().setHelmet(ItemBuilder.createItemStack(
+                            Material.CARVED_PUMPKIN,
+                            1,
+                            "§6Citrouille",
+                            List.of("Vous pouvez retirer la citrouille"))
+                    );
                 }
             }
             event.getItem().setAmount(event.getItem().getAmount() - 1);

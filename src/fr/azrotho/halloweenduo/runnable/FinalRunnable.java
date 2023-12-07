@@ -14,7 +14,7 @@ public class FinalRunnable extends BukkitRunnable {
     public void run() {
         if(!Main.started) return;
 
-        if(PlayerUtils.playerAlives() <= 5) {
+        if(PlayerUtils.playerAlives() <= 3) {
             for(Player player : Bukkit.getOnlinePlayers()) {
                 if(player.getGameMode().equals(GameMode.ADVENTURE)) {
                     player.addPotionEffect(new PotionEffect(PotionEffectType.GLOWING, 20, 0, false, false, false));

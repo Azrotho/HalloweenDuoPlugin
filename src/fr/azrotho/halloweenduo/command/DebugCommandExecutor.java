@@ -30,6 +30,11 @@ public class DebugCommandExecutor implements CommandExecutor {
                 break;
             case "start":
                 StartFunctions.start();
+                break;
+            case "getRandomExtraItems":
+                Player player2 = (Player) commandSender;
+                player2.getInventory().addItem(fr.azrotho.halloweenduo.utils.LootUtils.getRandomExtraItem());
+                break;
         }
 
         return true;

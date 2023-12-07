@@ -89,7 +89,8 @@ public class LootUtils {
     private static final List<ItemStack> EXTRA_ITEMS = List.of(
             ItemBuilder.getDarknessItemStack(),
             ItemBuilder.getBlindnessItemStack(),
-            ItemBuilder.getSlownessItemStack()
+            ItemBuilder.getSlownessItemStack(),
+            ItemBuilder.getPumpkinItemStack()
             );
 
     public static void spawnChest(Location loc, BlockFace direction, ItemStack... itemStacks) {

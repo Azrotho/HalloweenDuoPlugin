@@ -66,4 +66,10 @@ public class ItemBuilder {
                 "§7Un objet qui ralentit le reste des joueurs"
         ));
     }
+
+    public static ItemStack getPumpkinItemStack() {
+        return createItemStack(Material.PUMPKIN, 1, "§6§lCitrouille", List.of(
+                "§7Un objet qui a un pouvoir plutôt rigolo"
+        ));
+    }
 }
