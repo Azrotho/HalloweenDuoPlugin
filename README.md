@@ -1,5 +1,7 @@
 # HalloweenDuo
 
+![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white) ![Spigot 1.19.4](https://img.shields.io/badge/Spigot-1.19-orange?style=for-the-badge)
+
 Petit plugin Halloween fait pour jouer en duo entre potes, sur Spigot 1.19.
 
 Le principe est simple : tu fais `/friend <pseudo>` pour choisir ton allié, et après c'est un battle royale. Le dernier en vie gagne, ou si il reste juste un duo qui s'est choisi mutuellement, le duo gagne.
